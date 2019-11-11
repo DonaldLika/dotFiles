@@ -1,0 +1,14 @@
+[user]
+  name = Donald Lika
+  email = 
+[color]
+  ui = auto
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
+  keepBackup = false
