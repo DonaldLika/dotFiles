@@ -18,11 +18,11 @@ ARGUMENTS:
     exit 1
 fi
 
-    PORT=8000
-    if [ "$2" ]; then
-            PORT=$2
-    fi
+PORT=8000
+if [ "$2" ]; then
+    PORT=$2
+fi
 
-    POD_ID=$(kubectl get pods --selector=app=${SERVICENAME} --no-headers=true | sed 's/\(\w*\) .*/\1/' | tr -d '\n')
+POD_ID=$(kubectl get pods --selector=app=${SERVICENAME} --no-headers=true | sed 's/\(\w*\) .*/\1/' | tr -d '\n')
 
-    kubectl port-forward $POD_ID $PORT:$PORT
+kubectl port-forward $POD_ID $PORT:$PORT
