@@ -1,0 +1,10 @@
+# Git aliases
+alias gpum='git pull upstream master'
+
+# Gradle aliases
+
+alias gw='./gradlew'
+
+alias gwb='./gradlew clean build'
+
+alias gwr='./gradlew build --refresh-dependencies -PrefreshDynamicDeps'
