@@ -1,0 +1,53 @@
+#!/bin/bash
+                                                          
+[ `id -u` -eq 0 ] || { echo 'Root access required!'; exit 1;}
+
+
+# i3 Installation
+
+echo "Installing i3"
+if ! apt-get install i3; then
+        echo "$package failed to be installed with 'apt-get'."       
+        exit 1
+fi
+
+
+# Polybar installation
+Packages=(
+  cmake
+  cmake-data
+  libcairo2-dev
+  libxcb1-dev
+  libxcb-ewmh-dev 
+  libxcb-icccm4-dev
+  libxcb-image0-dev
+  libxcb-randr0-dev 
+  libxcb-util0-dev
+  libxcb-xkb-dev
+  pkg-config
+  python-xcbgen 
+  xcb-proto
+  libxcb-xrm-dev
+  i3-wm
+  libasound2-dev
+  libmpdclient-dev 
+  libiw-dev
+  libcurl4-openssl-dev
+  libpulse-dev 
+  libxcb-composite0-dev
+  xcb
+  libxcb-ewmh2
+)
+
+if ! apt-get install $Packages; then
+        echo "One or more packages failed to install with 'apt-get'."
+        exit 1
+fi
+
+git clone https://github.com/jaagr/polybar.git /tmp
+
+if ! ./tmp/polybar/.build.sh; then
+        echo "Failed to build and install polybar" 
+        exit 1
+fi
+
