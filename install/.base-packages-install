@@ -3,15 +3,15 @@
 [ `id -u` -eq 0 ] || { echo 'Root access required!'; exit 1;}
 
 Packages=(
-git
-neovim
-zsh
-curl
-openjdk-8-jdk
-openjdk-11-jdk
-httpie
+   git
+   neovim
+   zsh
+   curl
+   openjdk-8-jdk
+   openjdk-11-jdk
+   httpie
+   "code --classic"
 )
-
 
 # Packages installation
 
@@ -19,8 +19,8 @@ for package in "${Packages[@]}";
 do 
    echo "Installing $package"
    if ! apt-get install $package; then
-	echo "$package failed to be installed with 'apt-get'."
-        exit 1
+      echo "$package failed to be installed with 'apt-get'."
+      exit 1
    fi
 done
 
