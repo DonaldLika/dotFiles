@@ -1,15 +1,13 @@
 #!/bin/bash
                                                           
-[ `id -u` -eq 0 ] || { echo 'Root access required!'; exit 1;}
-
 # Copy fonts
-cp -a fonts/. ~/.local/share/fonts
+cp -a ../.config/.vs-code-settings/fonts/. ~/.local/share/fonts
 
 echo "Applying user settings"
 
 # Move settings and create a backup
 mv ~/.config/Code/User/settings.json ~/.config/Code/User/settings-backup.json
-cp settings.json ~/.config/Code/User
+ln ../.config/.vs-code-settings/settings.json ~/.config/Code/User
 
 Extensions=(
     eg2.vscode-npm-script
@@ -29,7 +27,8 @@ Extensions=(
 )
 
 # Installing extensions
-for extension in "${Extensions[@]}";do 
+for extension in "${Extensions[@]}";
+do 
  code --install-extension $extension
 done
 

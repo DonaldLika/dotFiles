@@ -2,16 +2,20 @@
                                                           
 [ `id -u` -eq 0 ] || { echo 'Root access required!'; exit 1;}
 
-
 # i3 Installation
+i3_Packages=(
+        i3
+        i3-wm 
+        i3lock
+)
 
 echo "Installing i3"
-if ! apt-get install i3; then
-        echo "$package failed to be installed with 'apt-get'."       
+if ! apt-get install $i3_Packages;; then
+        echo "Failed to install i3 packages with 'apt-get'."       
         exit 1
 fi
 
-
+echo "Installing Polybar dependencies"
 # Polybar installation
 Packages=(
   cmake
@@ -44,7 +48,10 @@ if ! apt-get install $Packages; then
         exit 1
 fi
 
-git clone https://github.com/jaagr/polybar.git /tmp
+git clone https://github.com/jaagr/polybar.git /tmp/polybar
+
+# Select tag to install
+git checkout 3.4.1
 
 if ! ./tmp/polybar/.build.sh; then
         echo "Failed to build and install polybar" 

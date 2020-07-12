@@ -2,7 +2,7 @@
 
 [ `id -u` -eq 0 ] || { echo 'Root access required!'; exit 1;}
 
-Packages=(
+Apt_Packages=(
    git
    neovim
    zsh
@@ -10,10 +10,12 @@ Packages=(
    openjdk-8-jdk
    openjdk-11-jdk
    httpie
-   "code --classic"
+   autojump
+   xbacklight
+   fzf
 )
 
-# Packages installation
+# Apt Packages installation
 
 for package in "${Packages[@]}";
 do 
@@ -24,3 +26,18 @@ do
    fi
 done
 
+Snap_Packages=(
+   "code --classic"
+   "intellij-idea-ultimate --classic"
+)
+
+# Snap Packages installation
+
+for package in "${Snap_Packages[@]}";
+do 
+   echo "Installing $package"
+   if ! snap install $package; then
+      echo "$package failed to be installed with 'snap'."
+      exit 1
+   fi
+done

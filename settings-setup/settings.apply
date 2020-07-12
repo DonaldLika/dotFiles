@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Apply i3 configs
+if [ ! -d "~/.config/i3" ]; then
+  mkdir "./.config/i3"
+fi
+
+ln .config/i3/* ~/.config/i3
+
+# Apply git configs
+ln .config/git/* ~/
