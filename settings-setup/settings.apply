@@ -2,10 +2,9 @@
 
 # Apply i3 configs
 if [ ! -d "~/.config/i3" ]; then
-  mkdir "~/.config/i3"
+  mkdir ~/.config/i3
+  ln .config/i3/* ~/.config/i3
 fi
-
-ln .config/i3/* ~/.config/i3
 
 # Apply git configs
 ln .config/git/* ~/
@@ -13,7 +12,6 @@ ln .config/git/* ~/
 # Apply polybar configs
 
 if [ ! -d "~/.config/polybar" ]; then
-  mkdir "~/.config/polybar"
+  mkdir ~/.config/polybar
+  ln ../.config/polybar/* ~/.config/polybar
 fi
-
-ln .config/polybar/* ~/.config/polybar
