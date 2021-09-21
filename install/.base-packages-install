@@ -22,7 +22,7 @@ Apt_Packages=(
 
 # Apt Packages installation
 
-for package in "${Packages[@]}";
+for package in "${Apt_Packages[@]}";
 do 
    echo "Installing $package"
    if ! apt-get install $package; then
